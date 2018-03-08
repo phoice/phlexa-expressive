@@ -48,9 +48,9 @@ class CertificateValidatorFactory implements FactoryInterface
 
         $flag = true;
 
-        if (isset($config['travello_alexa'])) {
-            if (isset($config['travello_alexa']['validate_signature'])) {
-                $flag = $config['travello_alexa']['validate_signature'];
+        if (isset($config['phlexa'])) {
+            if (isset($config['phlexa']['validate_signature'])) {
+                $flag = $config['phlexa']['validate_signature'];
             }
         }
 

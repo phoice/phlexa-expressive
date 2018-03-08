@@ -36,9 +36,9 @@ class LogAlexaRequestMiddlewareFactory implements FactoryInterface
 
         $flag = false;
 
-        if (isset($config['travello_alexa'])) {
-            if (isset($config['travello_alexa']['log_requests'])) {
-                $flag = $config['travello_alexa']['log_requests'];
+        if (isset($config['phlexa'])) {
+            if (isset($config['phlexa']['log_requests'])) {
+                $flag = $config['phlexa']['log_requests'];
             }
         }
 

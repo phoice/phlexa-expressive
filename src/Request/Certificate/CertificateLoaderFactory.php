@@ -38,12 +38,12 @@ class CertificateLoaderFactory implements FactoryInterface
         $cacheFlag = false;
         $cacheDir  = null;
 
-        if (isset($config['travello_alexa'])) {
-            if (isset($config['travello_alexa']['cache_flag'])) {
-                $cacheFlag = $config['travello_alexa']['cache_flag'];
+        if (isset($config['phlexa'])) {
+            if (isset($config['phlexa']['cache_flag'])) {
+                $cacheFlag = $config['phlexa']['cache_flag'];
             }
-            if (isset($config['travello_alexa']['cache_dir'])) {
-                $cacheDir = $config['travello_alexa']['cache_dir'];
+            if (isset($config['phlexa']['cache_dir'])) {
+                $cacheDir = $config['phlexa']['cache_dir'];
             }
         }
 
