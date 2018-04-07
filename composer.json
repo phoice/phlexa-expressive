@@ -13,8 +13,8 @@
     "http-interop/http-middleware": "^0.4.1",
     "psr/http-message": "^1.0",
     "phoice/phlexa": "dev-master",
-    "zendframework/zend-expressive-router": "^2.1",
-    "zendframework/zend-expressive-template": "^1.0",
+    "zendframework/zend-expressive-router": "^3.0",
+    "zendframework/zend-expressive-template": "^2.0",
     "zendframework/zend-servicemanager": "^3.3"
   },
   "require-dev": {
