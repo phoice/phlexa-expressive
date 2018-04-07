@@ -9,13 +9,16 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Phlexa\Request\AlexaRequest;
+use Phlexa\Request\Exception\BadRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Phlexa\Request\AlexaRequest;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class CheckApplicationMiddleware
@@ -43,17 +46,18 @@ class CheckApplicationMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
      * @return ResponseInterface
+     * @throws BadRequest
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->alexaRequest) {
             $this->alexaRequest->checkApplication($this->applicationId);
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

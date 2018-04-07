@@ -9,10 +9,14 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
 use Interop\Container\ContainerInterface;
 use Phlexa\Configuration\SkillConfiguration;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -28,8 +32,8 @@ class ConfigureSkillMiddlewareFactory implements FactoryInterface
      * @param array|null         $options
      *
      * @return ConfigureSkillMiddleware
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

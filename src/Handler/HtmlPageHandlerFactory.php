@@ -9,18 +9,22 @@
  * @link       https://www.travello.audio/
  */
 
-namespace PhlexaExpressive\Action;
+declare(strict_types=1);
+
+namespace PhlexaExpressive\Handler;
 
 use Interop\Container\ContainerInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
- * Class HtmlPageActionFactory
+ * Class HtmlPageHandlerFactory
  *
- * @package PhlexaExpressive\Action
+ * @package PhlexaExpressive\Handler
  */
-class HtmlPageActionFactory implements FactoryInterface
+class HtmlPageHandlerFactory implements FactoryInterface
 {
     /**
      * @param ContainerInterface $container
@@ -28,13 +32,13 @@ class HtmlPageActionFactory implements FactoryInterface
      * @param array|null|null    $options
      *
      * @return mixed
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $template = $container->get(TemplateRendererInterface::class);
 
-        return new HtmlPageAction($template);
+        return new HtmlPageHandler($template);
     }
 }

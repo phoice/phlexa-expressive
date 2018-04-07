@@ -9,6 +9,8 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Request\Certificate;
 
 use Interop\Container\ContainerInterface;
@@ -18,6 +20,8 @@ use Phlexa\Request\Certificate\CertificateValidator;
 use Phlexa\Request\Certificate\CertificateValidatorFactory as PhlexaCertificateValidatorFactory;
 use Zend\Diactoros\ServerRequestFactory;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class CertificateValidatorFactory
@@ -32,8 +36,8 @@ class CertificateValidatorFactory implements FactoryInterface
      * @param array|null         $options
      *
      * @return CertificateValidator
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

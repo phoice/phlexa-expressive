@@ -9,6 +9,8 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive;
 
 use Phlexa\Application\AlexaApplication;
@@ -19,10 +21,10 @@ use Phlexa\Request\Certificate\CertificateValidator;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Phlexa\TextHelper\TextHelper;
-use PhlexaExpressive\Action\HtmlPageAction;
-use PhlexaExpressive\Action\HtmlPageActionFactory;
-use PhlexaExpressive\Action\SkillAction;
-use PhlexaExpressive\Action\SkillActionFactory;
+use PhlexaExpressive\Handler\HtmlPageHandler;
+use PhlexaExpressive\Handler\HtmlPageHandlerFactory;
+use PhlexaExpressive\Handler\SkillHandler;
+use PhlexaExpressive\Handler\SkillHandlerFactory;
 use PhlexaExpressive\Application\AlexaApplicationFactory;
 use PhlexaExpressive\Intent\IntentManager;
 use PhlexaExpressive\Intent\IntentManagerFactory;
@@ -59,8 +61,8 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
-                    HtmlPageAction::class => HtmlPageActionFactory::class,
-                    SkillAction::class    => SkillActionFactory::class,
+                    HtmlPageHandler::class => HtmlPageHandlerFactory::class,
+                    SkillHandler::class    => SkillHandlerFactory::class,
 
                     AlexaApplication::class => AlexaApplicationFactory::class,
                     AlexaRequest::class     => AlexaRequestFactory::class,

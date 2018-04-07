@@ -9,14 +9,16 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\TextHelper\TextHelperInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class SetLocaleMiddleware
@@ -43,13 +45,7 @@ class SetLocaleMiddleware implements MiddlewareInterface
         $this->alexaRequest = $alexaRequest;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
-     *
-     * @return ResponseInterface
-     */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->alexaRequest) {
             $locale = $this->alexaRequest->getRequest()->getLocale();
@@ -57,6 +53,6 @@ class SetLocaleMiddleware implements MiddlewareInterface
             $this->textHelper->setLocale($locale);
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

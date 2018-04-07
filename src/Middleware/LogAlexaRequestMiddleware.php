@@ -9,13 +9,15 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class InjectAlexaRequestMiddleware
@@ -25,7 +27,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class LogAlexaRequestMiddleware implements MiddlewareInterface
 {
     /** @var bool */
-    private $logFlag = false;
+    private $logFlag;
 
     /**
      * InjectAlexaRequestMiddleware constructor.
@@ -37,13 +39,7 @@ class LogAlexaRequestMiddleware implements MiddlewareInterface
         $this->logFlag = $logFlag;
     }
 
-    /**
-     * @param Request           $request
-     * @param DelegateInterface $delegate
-     *
-     * @return ResponseInterface
-     */
-    public function process(Request $request, DelegateInterface $delegate)
+    public function process(Request $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() == RequestMethodInterface::METHOD_POST
             && $request->getHeaderLine('signaturecertchainurl')
@@ -65,6 +61,6 @@ class LogAlexaRequestMiddleware implements MiddlewareInterface
             }
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

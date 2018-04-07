@@ -9,30 +9,34 @@
  * @link       https://www.travello.audio/
  */
 
-namespace PhlexaExpressive\Action;
+declare(strict_types=1);
+
+namespace PhlexaExpressive\Handler;
 
 use Interop\Container\ContainerInterface;
 use Phlexa\Application\AlexaApplication;
 use Phlexa\Configuration\SkillConfiguration;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
- * Class SkillActionFactory
+ * Class SkillHandlerFactory
  *
- * @package PhlexaExpressive\Action
+ * @package PhlexaExpressive\Handler
  */
-class SkillActionFactory implements FactoryInterface
+class SkillHandlerFactory implements FactoryInterface
 {
     /**
      * @param ContainerInterface $container
      * @param string             $requestedName
      * @param array|null|null    $options
      *
-     * @return SkillAction
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @return SkillHandler
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): SkillAction
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): SkillHandler
     {
         /** @var SkillConfiguration $skillConfiguration */
         $skillConfiguration = $container->get(SkillConfiguration::class);
@@ -40,6 +44,6 @@ class SkillActionFactory implements FactoryInterface
         /** @var AlexaApplication $alexaApplication */
         $alexaApplication = $container->get($skillConfiguration->getApplicationClass());
 
-        return new SkillAction($alexaApplication);
+        return new SkillHandler($alexaApplication);
     }
 }

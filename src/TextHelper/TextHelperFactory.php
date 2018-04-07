@@ -9,12 +9,16 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\TextHelper;
 
 use Interop\Container\ContainerInterface;
 use Phlexa\Configuration\SkillConfiguration;
 use Phlexa\Configuration\SkillConfigurationInterface;
 use Phlexa\TextHelper\TextHelper;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -35,8 +39,8 @@ class TextHelperFactory implements FactoryInterface
      * @param array|null         $options
      *
      * @return TextHelper
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

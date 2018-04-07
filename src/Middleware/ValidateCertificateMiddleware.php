@@ -9,13 +9,15 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Phlexa\Request\Certificate\CertificateValidator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Phlexa\Request\Certificate\CertificateValidator;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class ValidateCertificateMiddleware
@@ -37,18 +39,12 @@ class ValidateCertificateMiddleware implements MiddlewareInterface
         $this->certificateValidator = $certificateValidator;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
-     *
-     * @return ResponseInterface
-     */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->certificateValidator) {
             $this->certificateValidator->validate();
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

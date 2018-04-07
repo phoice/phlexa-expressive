@@ -9,13 +9,15 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Phlexa\Configuration\SkillConfiguration;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Phlexa\Configuration\SkillConfiguration;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Expressive\Router\RouteResult;
 
 /**
@@ -43,13 +45,7 @@ class ConfigureSkillMiddleware implements MiddlewareInterface
         $this->skillConfiguration = $skillConfiguration;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
-     *
-     * @return ResponseInterface
-     */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         /** @var RouteResult $result */
         $result = $request->getAttribute(RouteResult::class);
@@ -66,6 +62,6 @@ class ConfigureSkillMiddleware implements MiddlewareInterface
             }
         }
 
-        return $delegate->process($request);
+        return $handler->handle($request);
     }
 }

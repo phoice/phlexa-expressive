@@ -9,6 +9,8 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Response;
 
 use Interop\Container\ContainerInterface;
@@ -16,6 +18,8 @@ use Phlexa\Request\AlexaRequest;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class AlexaResponseFactory
@@ -30,8 +34,8 @@ class AlexaResponseFactory implements FactoryInterface
      * @param array|null         $options
      *
      * @return AlexaResponse
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

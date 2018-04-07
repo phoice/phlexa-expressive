@@ -9,7 +9,9 @@
  * @link       https://www.travello.audio/
  */
 
-namespace PhlexaExpressive\Action;
+declare(strict_types=1);
+
+namespace PhlexaExpressive\Handler;
 
 use Exception;
 use Phlexa\Application\AlexaApplicationInterface;
@@ -20,17 +22,17 @@ use Phlexa\Request\Exception\BadRequest;
 use Zend\Diactoros\Response\JsonResponse;
 
 /**
- * Class SkillAction
+ * Class SkillHandler
  *
- * @package PhlexaExpressive\Action
+ * @package PhlexaExpressive\Handler
  */
-class SkillAction implements ServerMiddlewareInterface
+class SkillHandler implements ServerMiddlewareInterface
 {
     /** @var AlexaApplicationInterface */
     private $alexaApplication;
 
     /**
-     * SkillAction constructor.
+     * SkillHandler constructor.
      *
      * @param AlexaApplicationInterface $alexaApplication
      */

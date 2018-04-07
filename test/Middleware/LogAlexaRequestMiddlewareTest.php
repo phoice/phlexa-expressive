@@ -9,10 +9,11 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressiveTest\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use Interop\Http\ServerMiddleware\DelegateInterface;
 use PhlexaExpressive\Middleware\LogAlexaRequestMiddleware;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
@@ -20,6 +21,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Class LogAlexaRequestMiddlewareTest
@@ -45,13 +47,13 @@ class LogAlexaRequestMiddlewareTest extends TestCase
         /** @var ResponseInterface|ObjectProphecy $response */
         $response = $this->prophesize(ResponseInterface::class)->reveal();
 
-        /** @var DelegateInterface|ObjectProphecy $delegate */
-        $delegate = $this->prophesize(DelegateInterface::class);
-        $delegate->process($request->reveal())->willReturn($response);
+        /** @var RequestHandlerInterface|ObjectProphecy $handler */
+        $handler = $this->prophesize(RequestHandlerInterface::class);
+        $handler->handle($request->reveal())->willReturn($response);
 
         $middleware = new LogAlexaRequestMiddleware();
 
-        $result = $middleware->process($request->reveal(), $delegate->reveal());
+        $result = $middleware->process($request->reveal(), $handler->reveal());
 
         $this->assertSame($response, $result);
     }
@@ -97,13 +99,13 @@ class LogAlexaRequestMiddlewareTest extends TestCase
         /** @var ResponseInterface|ObjectProphecy $response */
         $response = $this->prophesize(ResponseInterface::class)->reveal();
 
-        /** @var DelegateInterface|ObjectProphecy $delegate */
-        $delegate = $this->prophesize(DelegateInterface::class);
-        $delegate->process($request->reveal())->willReturn($response);
+        /** @var RequestHandlerInterface|ObjectProphecy $handler */
+        $handler = $this->prophesize(RequestHandlerInterface::class);
+        $handler->handle($request->reveal())->willReturn($response);
 
         $middleware = new LogAlexaRequestMiddleware();
 
-        $result = $middleware->process($request->reveal(), $delegate->reveal());
+        $result = $middleware->process($request->reveal(), $handler->reveal());
 
         $this->assertEquals($response, $result);
     }

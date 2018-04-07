@@ -9,9 +9,13 @@
  * @link       https://www.travello.audio/
  */
 
+declare(strict_types=1);
+
 namespace PhlexaExpressive\Middleware;
 
 use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
@@ -26,9 +30,9 @@ class LogAlexaRequestMiddlewareFactory implements FactoryInterface
      * @param string             $requestedName
      * @param array|null|null    $options
      *
-     * @return mixed
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @return LogAlexaRequestMiddleware
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

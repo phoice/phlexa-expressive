@@ -9,7 +9,9 @@
  * @link       https://www.travello.audio/
  */
 
-namespace PhlexaExpressive\Action;
+declare(strict_types=1);
+
+namespace PhlexaExpressive\Handler;
 
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
@@ -19,17 +21,17 @@ use Zend\Expressive\Router\RouteResult;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 /**
- * Class HtmlPageAction
+ * Class HtmlPageHandler
  *
- * @package PhlexaExpressive\Action
+ * @package PhlexaExpressive\Handler
  */
-class HtmlPageAction implements ServerMiddlewareInterface
+class HtmlPageHandler implements ServerMiddlewareInterface
 {
     /** @var  TemplateRendererInterface */
     private $template;
 
     /**
-     * HtmlPageAction constructor.
+     * HtmlPageHandler constructor.
      *
      * @param TemplateRendererInterface $template
      */
