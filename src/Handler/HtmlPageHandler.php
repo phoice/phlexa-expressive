@@ -13,9 +13,10 @@ declare(strict_types=1);
 
 namespace PhlexaExpressive\Handler;
 
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
+use InvalidArgumentException;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Router\RouteResult;
 use Zend\Expressive\Template\TemplateRendererInterface;
@@ -25,7 +26,7 @@ use Zend\Expressive\Template\TemplateRendererInterface;
  *
  * @package PhlexaExpressive\Handler
  */
-class HtmlPageHandler implements ServerMiddlewareInterface
+class HtmlPageHandler implements RequestHandlerInterface
 {
     /** @var  TemplateRendererInterface */
     private $template;
@@ -42,11 +43,11 @@ class HtmlPageHandler implements ServerMiddlewareInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
      *
-     * @return mixed
+     * @return ResponseInterface
+     * @throws InvalidArgumentException
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         /** @var RouteResult $routeResult */
         $routeResult = $request->getAttribute(RouteResult::class);

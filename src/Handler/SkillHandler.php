@@ -14,11 +14,12 @@ declare(strict_types=1);
 namespace PhlexaExpressive\Handler;
 
 use Exception;
+use InvalidArgumentException;
 use Phlexa\Application\AlexaApplicationInterface;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Phlexa\Request\Exception\BadRequest;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
 /**
@@ -26,7 +27,7 @@ use Zend\Diactoros\Response\JsonResponse;
  *
  * @package PhlexaExpressive\Handler
  */
-class SkillHandler implements ServerMiddlewareInterface
+class SkillHandler implements RequestHandlerInterface
 {
     /** @var AlexaApplicationInterface */
     private $alexaApplication;
@@ -43,11 +44,11 @@ class SkillHandler implements ServerMiddlewareInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
      *
-     * @return mixed
+     * @return ResponseInterface
+     * @throws InvalidArgumentException
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         try {
             $data = $this->alexaApplication->execute();
