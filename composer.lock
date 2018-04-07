@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e11a192d1a83eb14cdc969d84179c65",
+    "content-hash": "2aa2ea535bf36d1cb768dc235b6c6f9e",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -180,22 +180,26 @@
             "time": "2015-06-11T16:06:02+00:00"
         },
         {
-            "name": "http-interop/http-middleware",
-            "version": "0.4.1",
+            "name": "http-interop/http-server-middleware",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/http-interop/http-middleware.git",
-                "reference": "9a801fe60e70d5d608b61d56b2dcde29516c81b9"
+                "url": "https://github.com/http-interop/http-server-middleware.git",
+                "reference": "1ed99649e5f0d785c16d53cc021d7187ec350f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/http-interop/http-middleware/zipball/9a801fe60e70d5d608b61d56b2dcde29516c81b9",
-                "reference": "9a801fe60e70d5d608b61d56b2dcde29516c81b9",
+                "url": "https://api.github.com/repos/http-interop/http-server-middleware/zipball/1ed99649e5f0d785c16d53cc021d7187ec350f28",
+                "reference": "1ed99649e5f0d785c16d53cc021d7187ec350f28",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "psr/http-message": "^1.0"
+                "php": ">=7.0",
+                "psr/http-message": "^1.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "replace": {
+                "http-interop/http-middleware": ">=0.5"
             },
             "type": "library",
             "extra": {
@@ -205,8 +209,11 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Interop\\Http\\ServerMiddleware\\": "src/"
-                }
+                    "Interop\\Http\\Server\\": "src/"
+                },
+                "files": [
+                    "src/alias.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -220,30 +227,29 @@
             ],
             "description": "Common interface for HTTP server-side middleware",
             "keywords": [
-                "factory",
                 "http",
                 "middleware",
                 "psr",
-                "psr-17",
+                "psr-15",
                 "psr-7",
                 "request",
                 "response"
             ],
-            "abandoned": "http-interop/http-server-middleware",
-            "time": "2017-01-14T15:23:42+00:00"
+            "abandoned": "psr/http-server-middleware",
+            "time": "2018-01-23T14:34:55+00:00"
         },
         {
             "name": "phoice/phlexa",
-            "version": "dev-master",
+            "version": "1.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phoice/phlexa.git",
-                "reference": "2e17a8133281b6e115c815b5fe3918b78ef070e5"
+                "reference": "92cc509b4976a8120d531a869b9afce3d2162bf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phoice/phlexa/zipball/2e17a8133281b6e115c815b5fe3918b78ef070e5",
-                "reference": "2e17a8133281b6e115c815b5fe3918b78ef070e5",
+                "url": "https://api.github.com/repos/phoice/phlexa/zipball/92cc509b4976a8120d531a869b9afce3d2162bf9",
+                "reference": "92cc509b4976a8120d531a869b9afce3d2162bf9",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +258,7 @@
                 "glenscott/url-normalizer": "^1.4",
                 "php": "^7.1",
                 "psr/container": "^1.0",
-                "zendframework/zend-diactoros": "^1.4"
+                "zendframework/zend-diactoros": "^1.7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.0",
@@ -270,7 +276,7 @@
             ],
             "description": "Build voice applications for Amazon Alexa with phlexa and PHP",
             "homepage": "https://www.phoice.tech/",
-            "time": "2018-03-24T16:31:58+00:00"
+            "time": "2018-04-07T06:57:46+00:00"
         },
         {
             "name": "psr/container",
@@ -2294,9 +2300,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "stability-flags": {
-        "phoice/phlexa": 20
+        "phoice/phlexa": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
