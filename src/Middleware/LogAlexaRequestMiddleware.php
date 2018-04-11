@@ -45,7 +45,7 @@ class LogAlexaRequestMiddleware implements MiddlewareInterface
             && $request->getHeaderLine('signaturecertchainurl')
         ) {
             if ($this->logFlag) {
-                $microtime = explode('.', microtime(true));
+                $microtime = explode('.', (string) microtime(true));
 
                 $random = date('Y-m-d-H-i-s-') . $microtime[1];
 
