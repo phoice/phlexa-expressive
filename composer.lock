@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "62404fc16bf82bd5104a0bb13ca15095",
+    "content-hash": "db22d73c3e272103d9104167a059d388",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -181,16 +181,16 @@
         },
         {
             "name": "phoice/phlexa",
-            "version": "1.0.0-beta7",
+            "version": "1.0.0-beta8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phoice/phlexa.git",
-                "reference": "75e4fa573b554f0b4770faefc770a4bab25072b8"
+                "reference": "9166bdb51f2d0ce69454731172299c754449f137"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phoice/phlexa/zipball/75e4fa573b554f0b4770faefc770a4bab25072b8",
-                "reference": "75e4fa573b554f0b4770faefc770a4bab25072b8",
+                "url": "https://api.github.com/repos/phoice/phlexa/zipball/9166bdb51f2d0ce69454731172299c754449f137",
+                "reference": "9166bdb51f2d0ce69454731172299c754449f137",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
             ],
             "description": "Build voice applications for Amazon Alexa with phlexa and PHP",
             "homepage": "https://www.phoice.tech/",
-            "time": "2018-10-16T06:46:32+00:00"
+            "time": "2018-10-16T08:15:30+00:00"
         },
         {
             "name": "psr/container",
