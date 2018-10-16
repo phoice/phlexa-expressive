@@ -60,8 +60,8 @@ class CertificateValidatorFactory implements FactoryInterface
 
         /** @var CertificateValidator $certificateValidator */
         $certificateValidator = $certificateValidatorFactory->create(
-            $serverRequest->getHeader('signaturecertchainurl')[0],
-            $serverRequest->getHeader('signature')[0],
+            $serverRequest->getHeader('signaturecertchainurl')[0] ?? '',
+            $serverRequest->getHeader('signature')[0] ?? '',
             $alexaRequest,
             $certificateLoader,
             $flag
