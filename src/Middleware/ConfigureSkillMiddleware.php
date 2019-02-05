@@ -69,7 +69,7 @@ class ConfigureSkillMiddleware implements MiddlewareInterface
         }
 
         $this->skillConfiguration->setHost(
-            $request->getUri()->getScheme() . '://' . $request->getUri()->getHost() . '/'
+            $request->getUri()->getScheme() . '://' . $request->getUri()->getHost()
         );
 
         return $handler->handle($request);
