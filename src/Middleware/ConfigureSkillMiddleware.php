@@ -45,6 +45,12 @@ class ConfigureSkillMiddleware implements MiddlewareInterface
         $this->skillConfiguration = $skillConfiguration;
     }
 
+    /**
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
+     *
+     * @return ResponseInterface
+     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         /** @var RouteResult $result */
@@ -61,6 +67,10 @@ class ConfigureSkillMiddleware implements MiddlewareInterface
                 $this->skillConfiguration->setConfig($this->config['skills'][$skillName]);
             }
         }
+
+        $this->skillConfiguration->setHost(
+            $request->getUri()->getScheme() . '://' . $request->getUri()->getHost() . '/'
+        );
 
         return $handler->handle($request);
     }
