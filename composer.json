@@ -7,7 +7,7 @@
   "config": {
     "sort-packages": true
   },
-  "minimum-stability" : "stable",
+  "minimum-stability" : "beta",
   "require": {
     "php": "^7.1",
     "fig/http-message-util": "^1.1",
