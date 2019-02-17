@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "64e0d43e1d5dbc637222156a9ce7e945",
+    "content-hash": "737a0c2e9e6a9fe0593565b8676d9f72",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -181,21 +181,22 @@
         },
         {
             "name": "phoice/phlexa",
-            "version": "1.0.2",
+            "version": "2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phoice/phlexa.git",
-                "reference": "0372cf6165d6f090a56f4ae718dbca2547ef708a"
+                "reference": "c422927e7bb235e5dfa7908dff24a365e6a8ae65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phoice/phlexa/zipball/0372cf6165d6f090a56f4ae718dbca2547ef708a",
-                "reference": "0372cf6165d6f090a56f4ae718dbca2547ef708a",
+                "url": "https://api.github.com/repos/phoice/phlexa/zipball/c422927e7bb235e5dfa7908dff24a365e6a8ae65",
+                "reference": "c422927e7bb235e5dfa7908dff24a365e6a8ae65",
                 "shasum": ""
             },
             "require": {
                 "curl/curl": "^1.6",
                 "ext-curl": "*",
+                "ext-json": "*",
                 "glenscott/url-normalizer": "^1.4",
                 "php": "^7.1",
                 "psr/container": "^1.0",
@@ -217,7 +218,7 @@
             ],
             "description": "Build voice applications for Amazon Alexa with phlexa and PHP",
             "homepage": "https://www.phoice.tech/",
-            "time": "2019-02-05T17:28:16+00:00"
+            "time": "2019-02-17T09:40:58+00:00"
         },
         {
             "name": "psr/container",
@@ -2271,7 +2272,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phoice/phlexa": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
