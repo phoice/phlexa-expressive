@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7dd5ba52c67fbc13b80dde361c1fdb3",
+    "content-hash": "0e1721ff8ea22b6b32f7a5ec794a3bdf",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -181,16 +181,16 @@
         },
         {
             "name": "phoice/phlexa",
-            "version": "2.0.0-beta6",
+            "version": "2.0.0-beta7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phoice/phlexa.git",
-                "reference": "500eb4ac5d026fd16e3a6daadf84439e269fd2e1"
+                "reference": "d389f8a151273737f4431ca8a3d27638b842c0b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phoice/phlexa/zipball/500eb4ac5d026fd16e3a6daadf84439e269fd2e1",
-                "reference": "500eb4ac5d026fd16e3a6daadf84439e269fd2e1",
+                "url": "https://api.github.com/repos/phoice/phlexa/zipball/d389f8a151273737f4431ca8a3d27638b842c0b2",
+                "reference": "d389f8a151273737f4431ca8a3d27638b842c0b2",
                 "shasum": ""
             },
             "require": {
@@ -218,7 +218,7 @@
             ],
             "description": "Build voice applications for Amazon Alexa with phlexa and PHP",
             "homepage": "https://www.phoice.tech/",
-            "time": "2019-04-07T14:20:02+00:00"
+            "time": "2019-04-08T10:11:03+00:00"
         },
         {
             "name": "psr/container",
